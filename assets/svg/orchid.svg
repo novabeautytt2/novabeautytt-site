@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 240" fill="none">
+  <!-- Novabeautytt orchid spray: rose blooms on a green stem -->
+  <g stroke="#1F7A44" stroke-width="2" stroke-linecap="round">
+    <path d="M28 236 C 60 180, 96 150, 148 118"/>
+    <path d="M92 158 C 104 146, 118 140, 134 138"/>
+    <path d="M58 196 C 70 186, 82 182, 96 182"/>
+    <path d="M148 118 C 162 108, 176 102, 192 100"/>
+  </g>
+  <!-- bloom 1 (large, top) -->
+  <g transform="translate(160 78)">
+    <g fill="#E5C2C5" stroke="#D08E94" stroke-width="1.6">
+      <path d="M0 0 C -8 -26, 8 -34, 12 -14 C 14 -6, 8 0, 0 0 Z"/>
+      <path d="M0 0 C 24 -14, 36 0, 18 10 C 10 14, 2 8, 0 0 Z"/>
+      <path d="M0 0 C 10 24, -6 34, -12 16 C -15 7, -8 2, 0 0 Z"/>
+      <path d="M0 0 C -24 12, -36 -2, -18 -12 C -10 -16, -3 -8, 0 0 Z"/>
+      <path d="M0 0 C -26 -8, -22 -28, -6 -20 C 0 -17, 2 -8, 0 0 Z"/>
+    </g>
+    <circle cx="0" cy="0" r="4.5" fill="#D08E94"/>
+    <circle cx="0" cy="0" r="1.8" fill="#F4F0EF"/>
+  </g>
+  <!-- bloom 2 (mid) -->
+  <g transform="translate(104 150) scale(.72) rotate(-14)">
+    <g fill="#E5C2C5" stroke="#D08E94" stroke-width="1.8">
+      <path d="M0 0 C -8 -26, 8 -34, 12 -14 C 14 -6, 8 0, 0 0 Z"/>
+      <path d="M0 0 C 24 -14, 36 0, 18 10 C 10 14, 2 8, 0 0 Z"/>
+      <path d="M0 0 C 10 24, -6 34, -12 16 C -15 7, -8 2, 0 0 Z"/>
+      <path d="M0 0 C -24 12, -36 -2, -18 -12 C -10 -16, -3 -8, 0 0 Z"/>
+      <path d="M0 0 C -26 -8, -22 -28, -6 -20 C 0 -17, 2 -8, 0 0 Z"/>
+    </g>
+    <circle cx="0" cy="0" r="4.5" fill="#D08E94"/>
+  </g>
+  <!-- bloom 3 (low, small) -->
+  <g transform="translate(66 190) scale(.52) rotate(18)">
+    <g fill="#E5C2C5" stroke="#D08E94" stroke-width="2">
+      <path d="M0 0 C -8 -26, 8 -34, 12 -14 C 14 -6, 8 0, 0 0 Z"/>
+      <path d="M0 0 C 24 -14, 36 0, 18 10 C 10 14, 2 8, 0 0 Z"/>
+      <path d="M0 0 C 10 24, -6 34, -12 16 C -15 7, -8 2, 0 0 Z"/>
+      <path d="M0 0 C -24 12, -36 -2, -18 -12 C -10 -16, -3 -8, 0 0 Z"/>
+    </g>
+    <circle cx="0" cy="0" r="4.5" fill="#D08E94"/>
+  </g>
+  <!-- buds -->
+  <g fill="#E5C2C5" stroke="#1F7A44" stroke-width="1.6">
+    <ellipse cx="196" cy="98" rx="6" ry="9" transform="rotate(28 196 98)"/>
+    <ellipse cx="206" cy="110" rx="4.6" ry="7" transform="rotate(38 206 110)"/>
+  </g>
+  <!-- leaf -->
+  <path d="M40 226 C 20 208, 22 186, 44 176 C 50 196, 52 214, 40 226 Z"
+        fill="none" stroke="#1F7A44" stroke-width="2" stroke-linejoin="round"/>
+</svg>
