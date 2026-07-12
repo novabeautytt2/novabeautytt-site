@@ -16,10 +16,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <meta name="theme-color" content="#DDD5D6">
+  <meta name="theme-color" content="#F5E4D2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
@@ -31,6 +31,7 @@
     "url": "https://novabeautytt.com.au",
     "email": "mailto:novabeautytt@gmail.com",
     "image": "https://novabeautytt.com.au/assets/img/og-image.jpg",
+    "logo": "https://novabeautytt.com.au/assets/img/logo.png",
     "priceRange": "$25-$120",
     "address": {"@type": "PostalAddress", "addressLocality": "Caroline Springs", "addressRegion": "VIC", "addressCountry": "AU"},
     "areaServed": ["Caroline Springs", "Taylors Hill", "Hillside", "Sydenham", "Sunshine", "Deer Park", "St Albans", "Melbourne West"],
@@ -47,12 +48,14 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="header">
   <div class="wrap header__inner">
-    <a class="wordmark" href="/" aria-label="Novabeautytt home">Novabeauty<span>tt</span></a>
+    <a class="wordmark" href="/" aria-label="Novabeautytt home">
+      <img src="/assets/img/logo.png" alt="Novabeautytt" width="1000" height="202">
+    </a>
     <nav class="nav" aria-label="Main">
       <a href="/" aria-current="page">Home</a>
       <a href="/services">Services</a>
       <a href="/gallery">Gallery</a>
-      <a href="/about">About</a>
+      <a href="/experience">Experience</a>
       <a href="/policies">Policies</a>
       <a href="/contact">Contact</a>
     </nav>
@@ -67,7 +70,7 @@
       <li><a class="mm-link" href="/" aria-current="page"><span class="mm-num">01</span>Home</a></li>
       <li><a class="mm-link" href="/services"><span class="mm-num">02</span>Services</a></li>
       <li><a class="mm-link" href="/gallery"><span class="mm-num">03</span>Gallery</a></li>
-      <li><a class="mm-link" href="/about"><span class="mm-num">04</span>About</a></li>
+      <li><a class="mm-link" href="/experience"><span class="mm-num">04</span>Experience</a></li>
       <li><a class="mm-link" href="/policies"><span class="mm-num">05</span>Policies</a></li>
       <li><a class="mm-link" href="/contact"><span class="mm-num">06</span>Contact</a></li>
     </ul>
@@ -92,8 +95,8 @@
   </div>
   <div class="wrap hero__inner">
     <span class="hero__badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c1.8 2.4 1.8 4.8 0 6.4C10.2 7.8 10.2 5.4 12 3Zm6.5 3.2c-.3 3-1.9 4.8-4.3 5 .3-3 1.9-4.7 4.3-5ZM5.5 6.2c2.4.3 4 2 4.3 5-2.4-.2-4-2-4.3-5ZM12 12.5c2.6 0 4.6 1.6 5.4 4.6-3 .4-5-1-5.4-4.6Zm0 0c-.4 3.6-2.4 5-5.4 4.6.8-3 2.8-4.6 5.4-4.6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="11" r="1.4" fill="currentColor"/></svg> 2 in 1 &middot; nails + lashes</span>
-    <h1>Novabeautytt</h1>
-    <p class="hero__sub">Gel X nails and lash extensions done in one place, by one dedicated technician. Caroline Springs, Melbourne West.</p>
+    <h1>Nails + lashes.<br>One appointment.</h1>
+    <p class="hero__sub">Gel X sets and lash extensions done in one place, by one dedicated technician. Caroline Springs, Melbourne West.</p>
     <div class="hero__ctas">
       <a class="btn btn--green btn--lg js-book" href="/booking">Book now</a>
       <a class="btn btn--ghost-light btn--lg" href="/services">View prices</a>
@@ -101,7 +104,7 @@
     <ul class="hero__meta">
       <li>Appointment only</li>
       <li>One technician, start to finish</li>
-      <li>$10 deposit secures your spot</li>
+      <li>Your inspo pic, made real</li>
     </ul>
   </div>
 </section>
@@ -114,8 +117,7 @@
 </div>
 
 <section class="section">
-  <span class="watermark watermark--onbone watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z">
+  <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow">Signature services</span>
       <h2>The sets everyone books</h2>
@@ -132,11 +134,11 @@
         </div>
       </a>
       <a class="sig-card reveal" href="/services#nails">
-        <img src="/assets/img/thumb/nails-08.jpg" alt="Long stiletto Gel X set with 3D bows and chrome detail" loading="lazy">
+        <img src="/assets/img/thumb/nails-19.jpg" alt="Long pink Gel X set with 3D flowers, pearls and charms" loading="lazy">
         <div class="sig-card__body">
           <span class="sig-card__tag">Trending</span>
-          <h3>Cat eye + chrome</h3>
-          <p>Magnetic depth and mirror shine. The finish that moves when you do.</p>
+          <h3>3D + charms</h3>
+          <p>Hand-built florals, pearls and charms on a milky pink base. Straight off the feed.</p>
           <span class="from">From $40</span>
         </div>
       </a>
@@ -154,8 +156,7 @@
 </section>
 
 <section class="section section--blush">
-  <span class="watermark watermark--br" aria-hidden="true">T9</span>
-  <div class="wrap z">
+  <div class="wrap">
     <div class="split">
       <div class="split__media split__media--offset reveal">
         <img src="/assets/img/full/portrait-01.jpg" alt="Client showing a finished Novabeautytt set against a dark studio backdrop" loading="lazy">
@@ -185,11 +186,11 @@
     </div>
     <div class="ig-band reveal">
       <div class="ig-grid">
+        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-19.jpg" alt="Pink Gel X set with 3D flowers and charms" loading="lazy"></a>
+        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-20.jpg" alt="French set with gold bows and jewel charms" loading="lazy"></a>
+        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/lashes-02.jpg" alt="Wispy natural lash extensions close up" loading="lazy"></a>
         <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-17.jpg" alt="Chrome and charm Gel X set" loading="lazy"></a>
         <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-11.jpg" alt="Soft French ombre almond set" loading="lazy"></a>
-        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/lashes-02.jpg" alt="Wispy natural lash extensions close up" loading="lazy"></a>
-        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-07.jpg" alt="Pink stiletto set with fine art detail" loading="lazy"></a>
-        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-05.jpg" alt="Long square French tip set" loading="lazy"></a>
         <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/besties-06.jpg" alt="Friends together after matching appointments" loading="lazy"></a>
       </div>
     </div>
@@ -202,11 +203,10 @@
 </section>
 
 <section class="cta-band">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z">
-    <span class="eyebrow">Caroline Springs &middot; Melbourne West</span>
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--lime)">Caroline Springs &middot; Melbourne West</span>
     <h2>Your next set is waiting</h2>
-    <p class="lede">A $10 deposit secures your appointment. See live availability and pick a time that suits.</p>
+    <p class="lede">Pick a time that suits, send your inspo, and turn up. The rest is handled.</p>
     <a class="btn btn--green btn--lg js-book" href="/booking">Book now</a>
   </div>
 </section>
@@ -218,7 +218,9 @@
   <div class="wrap">
     <div class="footer__grid">
       <div>
-        <a class="wordmark" href="/">Novabeauty<span>tt</span></a>
+        <a class="wordmark" href="/" aria-label="Novabeautytt home">
+          <img src="/assets/img/logo-cream.png" alt="Novabeautytt" width="1000" height="202">
+        </a>
         <p>Nails and lashes, 2 in 1. An appointment-only studio in Caroline Springs, serving Melbourne's western suburbs.</p>
       </div>
       <div>
@@ -226,6 +228,7 @@
         <ul>
           <li><a href="/services">Services and prices</a></li>
           <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/experience">The experience</a></li>
           <li><a href="/booking">Book an appointment</a></li>
           <li><a href="/policies">Policies and FAQ</a></li>
         </ul>

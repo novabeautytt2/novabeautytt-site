@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Novabeautytt static site generator.
+"""Novabeautytt static site generator (brand v2: logo palette).
 Writes plain HTML pages into the site root. Edit templates here, re-run,
 commit, push. The output needs no build step to deploy."""
 
@@ -8,30 +8,30 @@ import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 PAGES = {
-    "index":    {"file": "index.html",    "nav": "Home",     "num": "01",
-                 "title": "Novabeautytt | Nails and Lash Extensions in Caroline Springs, Melbourne West",
-                 "desc": "Novabeautytt is a nails and lashes studio in Caroline Springs, Melbourne's west. Gel X nail sets, lash extensions, and 2 in 1 appointments by one dedicated technician. Book now."},
-    "services": {"file": "services.html", "nav": "Services", "num": "02",
-                 "title": "Nail and Lash Prices | Novabeautytt Caroline Springs",
-                 "desc": "Full price list for Gel X nails, lash extensions and refills, toe sets, 2 in 1 and duo appointments at Novabeautytt, Caroline Springs in Melbourne's west."},
-    "gallery":  {"file": "gallery.html",  "nav": "Gallery",  "num": "03",
-                 "title": "Nail Art and Lash Gallery | Novabeautytt Melbourne West",
-                 "desc": "Real client sets from Novabeautytt: Gel X nail art, French tips, chrome, 3D details and wispy lash extensions, all done in Caroline Springs, Melbourne west."},
-    "about":    {"file": "about.html",    "nav": "About",    "num": "04",
-                 "title": "About Novabeautytt | Caroline Springs Nail and Lash Studio",
-                 "desc": "The story behind Novabeautytt, a one-technician nail and lash studio serving Caroline Springs and Melbourne's western suburbs."},
-    "booking":  {"file": "booking.html",  "nav": "Book",     "num": "05",
-                 "title": "Book an Appointment | Novabeautytt Caroline Springs",
-                 "desc": "Book nails, lashes or a 2 in 1 appointment at Novabeautytt in Caroline Springs. See live availability and secure your spot with a $10 deposit."},
-    "policies": {"file": "policies.html", "nav": "Policies", "num": "06",
-                 "title": "Booking Policies and FAQ | Novabeautytt",
-                 "desc": "Deposits, cancellations, removals, prep and comfort policies for appointments at Novabeautytt, Caroline Springs."},
-    "contact":  {"file": "contact.html",  "nav": "Contact",  "num": "07",
-                 "title": "Contact Novabeautytt | Caroline Springs, Melbourne West",
-                 "desc": "Get in touch with Novabeautytt on Instagram or TikTok @novabeautytt, or by email. Appointment-only studio serving Caroline Springs and Melbourne's west."},
+    "index":      {"file": "index.html",      "nav": "Home",       "num": "01",
+                   "title": "Novabeautytt | Nails and Lash Extensions in Caroline Springs, Melbourne West",
+                   "desc": "Novabeautytt is a nails and lashes studio in Caroline Springs, Melbourne's west. Gel X nail sets, lash extensions, and 2 in 1 appointments by one dedicated technician. Book now."},
+    "services":   {"file": "services.html",   "nav": "Services",   "num": "02",
+                   "title": "Nail and Lash Prices | Novabeautytt Caroline Springs",
+                   "desc": "Full price list and style guide for Gel X nails, lash extensions and refills, toe sets, 2 in 1 and duo appointments at Novabeautytt, Caroline Springs in Melbourne's west."},
+    "gallery":    {"file": "gallery.html",    "nav": "Gallery",    "num": "03",
+                   "title": "Nail Art and Lash Gallery | Novabeautytt Melbourne West",
+                   "desc": "Real client sets from Novabeautytt: Gel X nail art, French tips, chrome, 3D details and wispy lash extensions, all done in Caroline Springs, Melbourne west."},
+    "experience": {"file": "experience.html", "nav": "Experience", "num": "04",
+                   "title": "The Novabeautytt Experience | Prep, Aftercare and What to Expect",
+                   "desc": "What a Novabeautytt appointment feels like: how to prep, how long sets take, aftercare for lashes and Gel X nails, and the comfort-first studio policy."},
+    "booking":    {"file": "booking.html",    "nav": "Book",       "num": "05",
+                   "title": "Book an Appointment | Novabeautytt Caroline Springs",
+                   "desc": "Book nails, lashes or a 2 in 1 appointment at Novabeautytt in Caroline Springs. See availability and lock in a time that suits."},
+    "policies":   {"file": "policies.html",   "nav": "Policies",   "num": "06",
+                   "title": "Booking Policies and FAQ | Novabeautytt",
+                   "desc": "Cancellations, removals, prep and comfort policies for appointments at Novabeautytt, Caroline Springs."},
+    "contact":    {"file": "contact.html",    "nav": "Contact",    "num": "07",
+                   "title": "Contact Novabeautytt | Caroline Springs, Melbourne West",
+                   "desc": "Get in touch with Novabeautytt on Instagram or TikTok @novabeautytt, or by email. Appointment-only studio serving Caroline Springs and Melbourne's west."},
 }
 
-NAV_ORDER = ["index", "services", "gallery", "about", "policies", "contact"]
+NAV_ORDER = ["index", "services", "gallery", "experience", "policies", "contact"]
 
 def url_of(key):
     return "/" if key == "index" else "/" + PAGES[key]["file"].replace(".html", "")
@@ -54,6 +54,7 @@ def head(page):
     "url": "https://novabeautytt.com.au",
     "email": "mailto:novabeautytt@gmail.com",
     "image": "https://novabeautytt.com.au/assets/img/og-image.jpg",
+    "logo": "https://novabeautytt.com.au/assets/img/logo.png",
     "priceRange": "$25-$120",
     "address": {"@type": "PostalAddress", "addressLocality": "Caroline Springs", "addressRegion": "VIC", "addressCountry": "AU"},
     "areaServed": ["Caroline Springs", "Taylors Hill", "Hillside", "Sydenham", "Sunshine", "Deer Park", "St Albans", "Melbourne West"],
@@ -78,12 +79,15 @@ def head(page):
   <meta property="og:title" content="{p['title']}">
   <meta property="og:description" content="{p['desc']}">
   <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="https://novabeautytt.com.au/assets/img/og-image.jpg">\n  <meta property="og:locale" content="en_AU">
+  <meta property="og:image" content="https://novabeautytt.com.au/assets/img/og-image.jpg">
+  <meta property="og:locale" content="en_AU">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg">\n  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">\n  <meta name="theme-color" content="#DDD5D6">
+  <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#F5E4D2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script>document.documentElement.classList.add('js')</script>{schema}
 </head>
@@ -103,7 +107,9 @@ def header(page):
                      f'<span class="mm-num">{i:02d}</span>{p["nav"]}</a></li>\n')
     return f"""<header class="header">
   <div class="wrap header__inner">
-    <a class="wordmark" href="/" aria-label="Novabeautytt home">Novabeauty<span>tt</span></a>
+    <a class="wordmark" href="/" aria-label="Novabeautytt home">
+      <img src="/assets/img/logo.png" alt="Novabeautytt" width="1000" height="202">
+    </a>
     <nav class="nav" aria-label="Main">
 {links}    </nav>
     <a class="btn btn--green header__book js-book" href="/booking">Book now</a>
@@ -138,7 +144,9 @@ FOOTER = f"""</main>
   <div class="wrap">
     <div class="footer__grid">
       <div>
-        <a class="wordmark" href="/">Novabeauty<span>tt</span></a>
+        <a class="wordmark" href="/" aria-label="Novabeautytt home">
+          <img src="/assets/img/logo-cream.png" alt="Novabeautytt" width="1000" height="202">
+        </a>
         <p>Nails and lashes, 2 in 1. An appointment-only studio in Caroline Springs, serving Melbourne's western suburbs.</p>
       </div>
       <div>
@@ -146,6 +154,7 @@ FOOTER = f"""</main>
         <ul>
           <li><a href="/services">Services and prices</a></li>
           <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/experience">The experience</a></li>
           <li><a href="/booking">Book an appointment</a></li>
           <li><a href="/policies">Policies and FAQ</a></li>
         </ul>
@@ -177,22 +186,30 @@ ORCHID_L = '<img class="panel__flora panel__flora--bl" src="/assets/svg/orchid.s
 
 BLOSSOM = """<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c1.8 2.4 1.8 4.8 0 6.4C10.2 7.8 10.2 5.4 12 3Zm6.5 3.2c-.3 3-1.9 4.8-4.3 5 .3-3 1.9-4.7 4.3-5ZM5.5 6.2c2.4.3 4 2 4.3 5-2.4-.2-4-2-4.3-5ZM12 12.5c2.6 0 4.6 1.6 5.4 4.6-3 .4-5-1-5.4-4.6Zm0 0c-.4 3.6-2.4 5-5.4 4.6.8-3 2.8-4.6 5.4-4.6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="11" r="1.4" fill="currentColor"/></svg>"""
 
+LASH_STYLES = [
+    ("Nova bare", "classics", 30, 15, 20,
+     "One featherlight extension on each natural lash. Clean length and definition that reads as your lashes, just better. The everyday no-makeup set."),
+    ("Nova doll", "doll eye", 40, 20, 30,
+     "Mapped with length through the centre of the eye for that wide-awake, doe-eyed effect. Softly opens the eyes and flatters almond and monolid shapes."),
+    ("Nova silk", "wispy", 50, 25, 40,
+     "The signature. Longer spikes layered through a soft base for texture and flutter. Airy, editorial, and unreal on camera without looking heavy."),
+    ("Nova luxe", "volume", 60, 30, 50,
+     "Handmade fans of ultra-fine lashes on each natural lash for full, fluffy density. The one to book if your inspo folder says full glam."),
+    ("Nova dewy", "wet look", 70, 35, 60,
+     "Closed fans styled into glossy, piecey spikes. The freshly-applied-mascara effect that is all over TikTok, made to last for weeks."),
+    ("Nova Elite", "mega volume", 80, 40, 70,
+     "Dense, ultra-fine mega fans for maximum drama. The boldest set on the menu, built for events, shoots, and main-character energy."),
+]
 
-def lash_rows(kind):
-    data = [
-        ("Nova bare", "classics", 30, 15, 20),
-        ("Nova doll", "doll eye", 40, 20, 30),
-        ("Nova silk", "wispy", 50, 25, 40),
-        ("Nova luxe", "volume", 60, 30, 50),
-        ("Nova dewy", "wet look", 70, 35, 60),
-        ("Nova Elite", "mega volume", 80, 40, 70),
-    ]
+
+def lash_rows(kind, with_desc=False):
     idx = {"full": 2, "r2": 3, "r3": 4}[kind]
     out = ""
-    for row in data:
+    for row in LASH_STYLES:
         acc = ' acc' if row[0] == "Nova silk" else ''
-        out += f"""        <div class="price-row">
-          <span class="name">{row[0]} <small>{row[1]}</small></span>
+        desc = f'<span class="desc">{row[5]}</span>' if with_desc else ''
+        out += f"""        <div class="price-row{' price-row--desc' if with_desc else ''}">
+          <span class="name">{row[0]} <small>{row[1]}</small>{desc}</span>
           <span class="rule"></span>
           <span class="amount{acc}">${row[idx]}</span>
         </div>\n"""
@@ -209,8 +226,8 @@ HOME = f"""
   </div>
   <div class="wrap hero__inner">
     <span class="hero__badge">{BLOSSOM} 2 in 1 &middot; nails + lashes</span>
-    <h1>Novabeautytt</h1>
-    <p class="hero__sub">Gel X nails and lash extensions done in one place, by one dedicated technician. Caroline Springs, Melbourne West.</p>
+    <h1>Nails + lashes.<br>One appointment.</h1>
+    <p class="hero__sub">Gel X sets and lash extensions done in one place, by one dedicated technician. Caroline Springs, Melbourne West.</p>
     <div class="hero__ctas">
       <a class="btn btn--green btn--lg js-book" href="/booking">Book now</a>
       <a class="btn btn--ghost-light btn--lg" href="/services">View prices</a>
@@ -218,7 +235,7 @@ HOME = f"""
     <ul class="hero__meta">
       <li>Appointment only</li>
       <li>One technician, start to finish</li>
-      <li>$10 deposit secures your spot</li>
+      <li>Your inspo pic, made real</li>
     </ul>
   </div>
 </section>
@@ -231,8 +248,7 @@ HOME = f"""
 </div>
 
 <section class="section">
-  <span class="watermark watermark--onbone watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z">
+  <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow">Signature services</span>
       <h2>The sets everyone books</h2>
@@ -249,11 +265,11 @@ HOME = f"""
         </div>
       </a>
       <a class="sig-card reveal" href="/services#nails">
-        <img src="/assets/img/thumb/nails-08.jpg" alt="Long stiletto Gel X set with 3D bows and chrome detail" loading="lazy">
+        <img src="/assets/img/thumb/nails-19.jpg" alt="Long pink Gel X set with 3D flowers, pearls and charms" loading="lazy">
         <div class="sig-card__body">
           <span class="sig-card__tag">Trending</span>
-          <h3>Cat eye + chrome</h3>
-          <p>Magnetic depth and mirror shine. The finish that moves when you do.</p>
+          <h3>3D + charms</h3>
+          <p>Hand-built florals, pearls and charms on a milky pink base. Straight off the feed.</p>
           <span class="from">From $40</span>
         </div>
       </a>
@@ -271,8 +287,7 @@ HOME = f"""
 </section>
 
 <section class="section section--blush">
-  <span class="watermark watermark--br" aria-hidden="true">T9</span>
-  <div class="wrap z">
+  <div class="wrap">
     <div class="split">
       <div class="split__media split__media--offset reveal">
         <img src="/assets/img/full/portrait-01.jpg" alt="Client showing a finished Novabeautytt set against a dark studio backdrop" loading="lazy">
@@ -302,11 +317,11 @@ HOME = f"""
     </div>
     <div class="ig-band reveal">
       <div class="ig-grid">
+        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-19.jpg" alt="Pink Gel X set with 3D flowers and charms" loading="lazy"></a>
+        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-20.jpg" alt="French set with gold bows and jewel charms" loading="lazy"></a>
+        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/lashes-02.jpg" alt="Wispy natural lash extensions close up" loading="lazy"></a>
         <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-17.jpg" alt="Chrome and charm Gel X set" loading="lazy"></a>
         <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-11.jpg" alt="Soft French ombre almond set" loading="lazy"></a>
-        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/lashes-02.jpg" alt="Wispy natural lash extensions close up" loading="lazy"></a>
-        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-07.jpg" alt="Pink stiletto set with fine art detail" loading="lazy"></a>
-        <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/nails-05.jpg" alt="Long square French tip set" loading="lazy"></a>
         <a class="ig-cell" href="/gallery"><img src="/assets/img/thumb/besties-06.jpg" alt="Friends together after matching appointments" loading="lazy"></a>
       </div>
     </div>
@@ -319,11 +334,10 @@ HOME = f"""
 </section>
 
 <section class="cta-band">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z">
-    <span class="eyebrow">Caroline Springs &middot; Melbourne West</span>
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--lime)">Caroline Springs &middot; Melbourne West</span>
     <h2>Your next set is waiting</h2>
-    <p class="lede">A $10 deposit secures your appointment. See live availability and pick a time that suits.</p>
+    <p class="lede">Pick a time that suits, send your inspo, and turn up. The rest is handled.</p>
     <a class="btn btn--green btn--lg js-book" href="/booking">Book now</a>
   </div>
 </section>
@@ -332,8 +346,7 @@ HOME = f"""
 # ----------------------------------------------------------------- SERVICES
 SERVICES = f"""
 <section class="section section--blush" style="padding-bottom:clamp(40px,6vw,64px)">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z center">
+  <div class="wrap center">
     <span class="eyebrow">Services and prices</span>
     <h1 style="font-size:clamp(1.9rem,7vw,3.6rem)">The menu</h1>
     <p class="lede" style="margin:16px auto 0">Every price below is exactly what you pay. Lashes, Gel X nails, toes, and combined appointments, all in Caroline Springs.</p>
@@ -343,20 +356,19 @@ SERVICES = f"""
 <section class="section" id="lashes">
   <div class="wrap">
     <div class="panel reveal">
-      <span class="watermark watermark--tl" aria-hidden="true">T9</span>
       <div class="z">
         <h2 class="panel__title">Lash price list</h2>
-        <p class="panel__note">Six styles, from barely-there classics to full mega volume. Nova silk wispy is the signature and the most requested set on the books.</p>
+        <p class="panel__note">Six styles, from barely-there classics to full mega volume. Every set is mapped to your eye shape before a single lash goes on, so the finished look is designed for your face, not copied off a chart.</p>
         <div class="price-group">
           <h3>Extensions &middot; full set</h3>
-{lash_rows('full')}        </div>
+{lash_rows('full', with_desc=True)}        </div>
         <div class="price-group">
           <h3>2 week refills</h3>
 {lash_rows('r2')}        </div>
         <div class="price-group">
           <h3>3 week refills</h3>
 {lash_rows('r3')}        </div>
-        <p class="price-legend"><b>Refill rule:</b> refills need enough of your original set remaining. Past 3 weeks, book a fresh full set.</p>
+        <p class="price-legend"><b>Refill rule:</b> extensions shed naturally with your lash cycle, so refills every 2 to 3 weeks keep the set full. Refills need enough of your original set remaining; past 3 weeks, book a fresh full set.</p>
       </div>
       {ORCHID}
     </div>
@@ -366,10 +378,9 @@ SERVICES = f"""
 <section class="section section--blush" id="nails">
   <div class="wrap">
     <div class="panel reveal" style="background:var(--bone)">
-      <span class="watermark watermark--br" aria-hidden="true">T9</span>
       <div class="z">
         <h2 class="panel__title">Nail price list</h2>
-        <p class="panel__note">Gel X extensions priced by length, with art tiers added on top. Length is measured in magnet sizes, from a clean short set to full XLong drama.</p>
+        <p class="panel__note">All sets are Gel X: featherlight soft gel extensions bonded to your natural nail and cured under LED, with no harsh drilling and no acrylic fumes. They flex like real nails, wear beautifully for weeks, and soak off gently when it's time for the next set. Length is measured in magnet sizes, from a clean short set to full XLong drama.</p>
         <div class="price-group">
           <h3>Lengths &middot; Gel X</h3>
           <div class="price-row"><span class="name">XShort <small>0 to 1 magnets</small></span><span class="rule"></span><span class="amount">$30</span></div>
@@ -392,7 +403,7 @@ SERVICES = f"""
             <span class="chip">Duck</span><span class="chip">Square</span><span class="chip">Stiletto</span><span class="chip">Coffin</span><span class="chip">Almond</span>
           </div>
         </div>
-        <p class="price-legend">Send your inspo pic when booking and the right tier is confirmed before your appointment. No surprises on the day.</p>
+        <p class="price-legend">Gel X is the perfect canvas for chrome, cat eye, ombre, hand-painted art and 3D work. Send your inspo pic when booking and the right tier is confirmed before your appointment. No surprises on the day.</p>
       </div>
       {ORCHID_L}
     </div>
@@ -402,10 +413,9 @@ SERVICES = f"""
 <section class="section" id="toes">
   <div class="wrap">
     <div class="panel reveal">
-      <span class="watermark watermark--tl" aria-hidden="true">T9</span>
       <div class="z">
         <h2 class="panel__title">Toe sets</h2>
-        <p class="panel__note">Gel X toe sets. Please arrive with clean feet and toenails in workable condition so the tips can be fitted properly. Message on Instagram if unsure.</p>
+        <p class="panel__note">Gel X toe sets with the same featherlight finish as a hand set. Please arrive with clean feet and toenails in workable condition so the tips can be fitted properly. Message on Instagram if unsure.</p>
         <div class="price-group">
           <div class="price-row"><span class="name">All white toes</span><span class="rule"></span><span class="amount">$25</span></div>
           <div class="price-row"><span class="name">Whole colour</span><span class="rule"></span><span class="amount">$25</span></div>
@@ -421,8 +431,7 @@ SERVICES = f"""
 </section>
 
 <section class="section section--blush" id="two-in-one">
-  <span class="watermark watermark--br" aria-hidden="true">T9</span>
-  <div class="wrap z">
+  <div class="wrap">
     <div class="grid-2">
       <div class="panel reveal" style="background:var(--bone)">
         <div class="z">
@@ -445,6 +454,7 @@ SERVICES = f"""
     <div class="panel reveal">
       <div class="z">
         <h2 class="panel__title">Removals</h2>
+        <p class="panel__note">Both lashes and Gel X sets are designed to come off gently. Lash extensions are dissolved with a professional remover that protects your natural lashes, and Gel X soaks off with acetone, never pried or drilled, so your natural nails stay healthy underneath.</p>
         <div class="price-group">
           <h3>Lash removals</h3>
           <div class="price-row"><span class="name">Sets applied at Novabeautytt</span><span class="rule"></span><span class="amount">$10</span></div>
@@ -460,6 +470,7 @@ SERVICES = f"""
     </div>
     <div class="center" style="margin-top:clamp(36px,6vw,56px)">
       <a class="btn btn--green btn--lg js-book" href="/booking">Book your appointment</a>
+      <p style="margin-top:18px"><a class="text-link" href="/experience">First time? Read what to expect</a></p>
     </div>
   </div>
 </section>
@@ -467,44 +478,48 @@ SERVICES = f"""
 
 # ----------------------------------------------------------------- GALLERY
 GALLERY_ITEMS = [
-    ("nails-08", "nails", "Long stiletto Gel X set with 3D bows"),
+    ("nails-19", "nails", "Pink Gel X set with 3D flowers, pearls and charms"),
     ("lashes-03", "lashes", "Wispy lash extensions close up"),
-    ("nails-17", "nails", "Chrome Gel X set with charms"),
+    ("nails-20", "nails", "French set with gold bows and jewel charms"),
     ("besties-04", "besties", "Friends in a circle showing matching sets"),
-    ("nails-11", "nails", "Soft French ombre almond nails"),
-    ("nails-05", "nails", "Long square French tip set"),
+    ("nails-08", "nails", "Long stiletto Gel X set with 3D bows"),
+    ("nails-17", "nails", "Chrome Gel X set with charms"),
     ("lashes-02", "lashes", "Natural volume lash set close up"),
-    ("nails-07", "nails", "Pink stiletto set with fine detail"),
+    ("nails-11", "nails", "Soft French ombre almond nails"),
     ("besties-06", "besties", "Group photo after duo appointments"),
-    ("nails-04", "nails", "Two hands showing French Gel X sets"),
-    ("nails-14", "nails", "Almond ombre set with shimmer"),
+    ("nails-05", "nails", "Long square French tip set"),
+    ("nails-07", "nails", "Pink stiletto set with fine detail"),
     ("lashes-04", "lashes", "Doll eye lash extensions close up"),
-    ("nails-01", "nails", "French tip set with gold jewellery"),
+    ("nails-04", "nails", "Two hands showing French Gel X sets"),
     ("besties-02", "besties", "Besties circle overhead shot"),
-    ("nails-09", "nails", "Stiletto set with white floral art"),
-    ("nails-06", "nails", "Long French set with charm detail"),
+    ("nails-14", "nails", "Almond ombre set with shimmer"),
+    ("nails-01", "nails", "French tip set with gold jewellery"),
     ("portrait-02", "besties", "Client showing a finished set"),
-    ("nails-10", "nails", "French tips over lace"),
+    ("nails-09", "nails", "Stiletto set with white floral art"),
     ("lashes-01", "lashes", "Wispy hybrid lash set"),
-    ("nails-12", "nails", "Neutral French set with ring stack"),
+    ("nails-06", "nails", "Long French set with charm detail"),
     ("besties-08", "besties", "Circle of hands with fresh sets"),
+    ("nails-10", "nails", "French tips over lace"),
+    ("nails-12", "nails", "Neutral French set with ring stack"),
+    ("besties-03", "besties", "Group of friends with matching nails"),
     ("nails-15", "nails", "Soft pink almond set"),
     ("nails-16", "nails", "Black and chrome art set"),
-    ("besties-03", "besties", "Group of friends with matching nails"),
-    ("nails-13", "nails", "White tip Gel X set close up"),
     ("lashes-05", "lashes", "Lash lift and extension detail"),
     ("nails-02", "nails", "Long coffin French set"),
     ("besties-05", "besties", "Friends lying in a circle"),
     ("nails-03", "nails", "French set with cross necklace"),
     ("portrait-03", "besties", "Client portrait with fresh lashes"),
+    ("nails-13", "nails", "White tip Gel X set close up"),
     ("nails-18", "nails", "Dark chrome stiletto set"),
     ("besties-07", "besties", "Group shot with fresh sets"),
 ]
+
 
 def img_dims(rel):
     from PIL import Image as _I
     with _I.open(os.path.join(ROOT, rel)) as im:
         return im.size
+
 
 def gallery_html():
     items = ""
@@ -515,8 +530,7 @@ def gallery_html():
       </a>\n"""
     return f"""
 <section class="section section--blush" style="padding-bottom:clamp(40px,6vw,64px)">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z center">
+  <div class="wrap center">
     <span class="eyebrow">The portfolio</span>
     <h1 style="font-size:clamp(1.9rem,7vw,3.6rem)">Gallery</h1>
     <p class="lede" style="margin:16px auto 0">Every photo here is a real Novabeautytt client. Tap any set to view it up close, and screenshot freely for your inspo folder.</p>
@@ -548,14 +562,13 @@ def gallery_html():
 </div>
 """
 
-# ----------------------------------------------------------------- ABOUT
-ABOUT = f"""
+# ----------------------------------------------------------------- EXPERIENCE
+EXPERIENCE = f"""
 <section class="section section--blush" style="padding-bottom:clamp(40px,6vw,64px)">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z center">
-    <span class="eyebrow">The studio</span>
-    <h1 style="font-size:clamp(1.9rem,7vw,3.6rem)">About</h1>
-    <p class="lede" style="margin:16px auto 0">One technician. One chair. Every set done start to finish by the same hands.</p>
+  <div class="wrap center">
+    <span class="eyebrow">First visit to fresh set</span>
+    <h1 style="font-size:clamp(1.9rem,7vw,3.6rem)">The experience</h1>
+    <p class="lede" style="margin:16px auto 0">Everything to know before, during and after your appointment, so you walk in relaxed and walk out obsessed.</p>
   </div>
 </section>
 
@@ -567,45 +580,88 @@ ABOUT = f"""
         <span class="frame"></span>
       </div>
       <div class="split__body reveal">
-        <span class="eyebrow">The story</span>
-        <h2>Meet Novabeautytt</h2>
-        <!-- ABOUT BIO SLOT
-             Replace this block with the real bio text when ready.
-             Keep it to roughly 2 to 4 short paragraphs for this layout. -->
-        <div class="about-slot">
-          <p>Bio content slot. The real story goes here: how Novabeautytt started, the love for the craft, and what clients can expect when they sit down in the chair. Two to four short paragraphs fits this space perfectly.</p>
-        </div>
-        <!-- END ABOUT BIO SLOT -->
+        <span class="eyebrow">In the chair</span>
+        <h2>Your appointment, your pace</h2>
+        <p>Novabeautytt is appointment-only, which means the studio is yours for the session. No queue behind you, no one rushing the details, and the same hands on your set from prep to finishing photo.</p>
         <ul class="ticks">
-          <li>Based in Caroline Springs, serving Melbourne's western suburbs</li>
-          <li>Nails and lashes under one roof, the 2 in 1 way</li>
-          <li>Appointment only, so every session is one on one</li>
+          <li>Lash sets usually take 1.5 to 2.5 hours depending on the style; nail sets 1.5 to 3 hours with art</li>
+          <li>2 in 1 appointments run 3.5 to 4 hours, with snacks and water provided</li>
+          <li>Bring your inspo photos, or talk it through on the day. Shape, length, mapping and finish are all confirmed before anything starts</li>
         </ul>
+        <a class="btn btn--green js-book" href="/booking">Book your visit</a>
       </div>
     </div>
   </div>
 </section>
 
 <section class="section section--blush">
-  <span class="watermark watermark--br" aria-hidden="true">T9</span>
-  <div class="wrap z">
+  <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow">How it feels</span>
-      <h2>The appointment experience</h2>
+      <span class="eyebrow">Come prepared</span>
+      <h2>Before you arrive</h2>
     </div>
     <div class="steps">
       <div class="step reveal">
-        <h3>Settle in</h3>
-        <p>Appointment-only means the studio is yours for the session. Snacks and water are always provided, especially for longer 2 in 1 bookings.</p>
+        <h3>Nails</h3>
+        <p>Come with clean, bare nails, or book a removal if you're wearing an old set. Gel X bonds best to a clean natural nail, and good prep is what makes a set last for weeks instead of days.</p>
       </div>
       <div class="step reveal">
-        <h3>Your set, your way</h3>
-        <p>Bring inspo photos or talk it through on the day. Shape, length, tier and finish are all confirmed before anything starts.</p>
+        <h3>Lashes</h3>
+        <p>Arrive with clean, makeup-free eyes. No mascara, no eyeliner, no strip lash glue. Skip the coffee right before if you can; relaxed eyes make for the neatest application.</p>
       </div>
       <div class="step reveal">
-        <h3>Camera optional</h3>
-        <p>Photos and videos of finished sets are only ever taken with your okay. Prefer close-up shots only, or none at all? Just say so. Zero pressure.</p>
+        <h3>Toes</h3>
+        <p>For Gel X toe sets, feet should be cleaned and toenails in workable condition so the tips can be fitted properly. Not sure if yours qualify? Send a photo on Instagram before booking.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Make it last</span>
+      <h2>Aftercare that actually works</h2>
+      <p class="lede">A great set is a team effort. These small habits are the difference between two weeks and four.</p>
+    </div>
+    <div class="grid-2">
+      <div class="panel reveal">
+        <div class="z">
+          <h3 style="text-align:center;letter-spacing:.18em;margin-bottom:16px">Lashes</h3>
+          <ul class="ticks">
+            <li>Keep lashes completely dry for the first 24 hours while the adhesive cures. No steam, saunas or swimming</li>
+            <li>Cleanse daily with an oil-free lash cleanser, and keep oil-based skincare and makeup away from the lash line</li>
+            <li>Brush gently with a clean spoolie each morning to keep the set fluffy and separated</li>
+            <li>Sleep on your back or on a silk pillowcase where you can. Friction is the number one set-killer</li>
+            <li>Book refills every 2 to 3 weeks to stay full as your natural lashes cycle through</li>
+          </ul>
+        </div>
+        {ORCHID}
+      </div>
+      <div class="panel reveal">
+        <div class="z">
+          <h3 style="text-align:center;letter-spacing:.18em;margin-bottom:16px">Gel X nails</h3>
+          <ul class="ticks">
+            <li>Cuticle oil daily. It keeps the gel flexible and the bond strong, and it's the single biggest thing you can do for wear time</li>
+            <li>Wear gloves for dishes, cleaning products and long hot showers where you can</li>
+            <li>Nails are jewels, not tools. Use a key or a spoon, not your fresh set</li>
+            <li>If a tip lifts or pops, don't glue it or pick it. Message and it gets fixed properly</li>
+            <li>When it's time, book a removal. Soaking off protects your natural nail; peeling takes layers of it with the gel</li>
+          </ul>
+        </div>
+        {ORCHID_L}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--blush">
+  <div class="wrap" style="max-width:820px">
+    <div class="center reveal">
+      <span class="eyebrow">Comfort first</span>
+      <h2 style="margin-bottom:16px">Camera optional, always</h2>
+      <p class="lede" style="margin:0 auto 18px">Photos and videos of finished sets are only ever taken with your okay. Prefer close-up shots only, or none at all? Just say so before your appointment. Zero pressure, zero awkwardness.</p>
+      <p class="lede" style="margin:0 auto">Feeling nervous about a first appointment is normal. Book a duo with a friend, bring your headphones, or just say it's your first time and everything gets explained as it happens.</p>
     </div>
     <div class="center" style="margin-top:clamp(36px,6vw,56px)">
       <a class="btn btn--green btn--lg js-book" href="/booking">Book your visit</a>
@@ -617,11 +673,10 @@ ABOUT = f"""
 # ----------------------------------------------------------------- BOOKING
 BOOKING = f"""
 <section class="section book-hero" style="padding-bottom:clamp(40px,6vw,64px)">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z center">
+  <div class="wrap center">
     <span class="eyebrow">Live availability</span>
     <h1 style="font-size:clamp(1.9rem,7vw,3.6rem)">Book now</h1>
-    <p class="lede" style="margin:16px auto 0">No fixed hours, just real availability. Pick a time that suits, pay the $10 deposit, and your spot is locked in.</p>
+    <p class="lede" style="margin:16px auto 0">No fixed hours, just real availability. Pick a time that suits and your spot is locked in.</p>
   </div>
 </section>
 
@@ -637,8 +692,8 @@ BOOKING = f"""
         <p>See what's genuinely available and choose a slot that works. Booking a removal or a 2 in 1? Mention it so enough time is set aside.</p>
       </div>
       <div class="step">
-        <h3>Secure it</h3>
-        <p>A $10 deposit confirms your appointment and comes off your final total. Send design inspo with your shape and length after booking.</p>
+        <h3>Send your inspo</h3>
+        <p>After booking, send design or inspiration photos with your preferred shape and length so everything is ready when you arrive.</p>
       </div>
     </div>
 
@@ -664,8 +719,7 @@ BOOKING = f"""
 # ----------------------------------------------------------------- POLICIES
 POLICIES = f"""
 <section class="section section--blush" style="padding-bottom:clamp(40px,6vw,64px)">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z center">
+  <div class="wrap center">
     <span class="eyebrow">The fine print, made friendly</span>
     <h1 style="font-size:clamp(1.9rem,7vw,3.6rem)">Policies + FAQ</h1>
     <p class="lede" style="margin:16px auto 0">Everything you need to know before your appointment. By booking, you agree to these terms.</p>
@@ -675,15 +729,9 @@ POLICIES = f"""
 <section class="section">
   <div class="wrap" style="max-width:820px">
     <details class="acc-item reveal" open>
-      <summary>Deposits <span class="ind">+</span></summary>
-      <div class="acc-body">
-        <p>A <strong>$10 deposit</strong> is required to secure your booking and goes towards your final payment. Appointments are not confirmed until the deposit is paid.</p>
-      </div>
-    </details>
-    <details class="acc-item reveal">
       <summary>Cancellations + reschedules <span class="ind">+</span></summary>
       <div class="acc-body">
-        <p>A minimum of <strong>24 to 48 hours notice</strong> is required for cancellations or reschedules. Late changes or no-shows will result in loss of deposit.</p>
+        <p>A minimum of <strong>24 to 48 hours notice</strong> is required for cancellations or reschedules. Every appointment is one on one, so late changes and no-shows mean that time can't be offered to anyone else, and repeated late changes may affect future bookings.</p>
       </div>
     </details>
     <details class="acc-item reveal">
@@ -697,6 +745,7 @@ POLICIES = f"""
       <div class="acc-body">
         <p>Please come with <strong>clean, bare nails</strong> unless a removal has been booked. Extra time and charges may apply for removals, long lengths, nail art, or complex designs.</p>
         <p>For Gel X toe sets, toenails need to be in workable condition and feet cleaned before the appointment so the tips can be fitted and applied properly. Not sure if yours qualify? Send a message on Instagram before booking.</p>
+        <p>For lashes, arrive with clean, makeup-free eyes. The <a class="text-link" href="/experience">experience page</a> has the full prep rundown.</p>
       </div>
     </details>
     <details class="acc-item reveal">
@@ -736,8 +785,7 @@ POLICIES = f"""
 # ----------------------------------------------------------------- CONTACT
 CONTACT = f"""
 <section class="section section--blush" style="padding-bottom:clamp(40px,6vw,64px)">
-  <span class="watermark watermark--tl" aria-hidden="true">T9</span>
-  <div class="wrap z center">
+  <div class="wrap center">
     <span class="eyebrow">Say hello</span>
     <h1 style="font-size:clamp(1.9rem,7vw,3.6rem)">Contact</h1>
     <p class="lede" style="margin:16px auto 0">Instagram DM is the fastest way to reach the studio. Bookings, questions, inspo checks, all welcome.</p>
@@ -781,7 +829,7 @@ CONTACT = f"""
 def build():
     bodies = {
         "index": HOME, "services": SERVICES, "gallery": gallery_html(),
-        "about": ABOUT, "booking": BOOKING, "policies": POLICIES, "contact": CONTACT,
+        "experience": EXPERIENCE, "booking": BOOKING, "policies": POLICIES, "contact": CONTACT,
     }
     for key, body in bodies.items():
         html = head(key) + header(key) + body + FOOTER
