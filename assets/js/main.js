@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         '<a class="btn btn--green btn--lg" href="' + FRESHA_URL +
         '" target="_blank" rel="noopener">Open the booking calendar</a>' +
         '<p style="margin-top:18px;font-size:.85rem;color:var(--ink-soft)">' +
-        'Live availability, service selection and deposits are all handled securely through Fresha.</p>';
+        'Live availability and service selection are handled securely through Fresha.</p>';
     }
   }
 
@@ -121,4 +121,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Current year */
   document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
+});
+
+/* ------------------------------------------------------------
+   v3 additions
+   ------------------------------------------------------------ */
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* Build-your-set price estimator (services page).
+     Sums the published length + art tier + French tip prices only. */
+  const buildEl = document.querySelector("[data-build]");
+  if (buildEl) {
+    const lens = [...buildEl.querySelectorAll(".len")];
+    const tiers = [...buildEl.querySelectorAll(".tier")];
+    const french = buildEl.querySelector("#frenchTip");
+    const bar = buildEl.querySelector("[data-build-total]");
+    const out = buildEl.querySelector("[data-total]");
+    const price = el => Number(el.dataset.price || 0);
+    const picked = group => group.find(b => b.getAttribute("aria-pressed") === "true");
+
+    const update = () => {
+      const len = picked(lens);
+      if (!len) { bar.hidden = true; return; }
+      const tier = picked(tiers);
+      const total = price(len) + (tier ? price(tier) : 0) + (french && french.checked ? price(french) : 0);
+      out.textContent = "$" + total;
+      bar.hidden = false;
+    };
+    const wire = group => group.forEach(b => b.addEventListener("click", () => {
+      group.forEach(x => x.setAttribute("aria-pressed", "false"));
+      b.setAttribute("aria-pressed", "true");
+      update();
+    }));
+    wire(lens);
+    wire(tiers);
+    if (french) french.addEventListener("change", update);
+  }
+
+  /* Services subnav: highlight the section in view */
+  const subnav = document.querySelector(".subnav");
+  if (subnav && "IntersectionObserver" in window) {
+    const links = [...subnav.querySelectorAll("a[href^='#']")];
+    const map = new Map();
+    links.forEach(l => {
+      const s = document.querySelector(l.getAttribute("href"));
+      if (s) map.set(s, l);
+    });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove("is-here"));
+          const l = map.get(e.target);
+          if (l) l.classList.add("is-here");
+        }
+      });
+    }, { rootMargin: "-25% 0px -65% 0px" });
+    map.forEach((_, s) => io.observe(s));
+  }
 });
