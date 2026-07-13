@@ -221,7 +221,6 @@ h3{font-size:clamp(1.2rem, 3.4vw, 1.5rem)}
 .hero__badge{
   display:inline-flex;align-items:center;gap:10px;
 }
-.hero__badge svg{width:15px;height:15px;flex:none}
 .hero__badge{
   font-size:.68rem;font-weight:600;letter-spacing:var(--track-wide);text-transform:uppercase;
   background:var(--lime);color:var(--ink);
@@ -293,10 +292,6 @@ h3{font-size:clamp(1.2rem, 3.4vw, 1.5rem)}
   min-width:56px;text-align:right;
 }
 .price-row .amount.acc{color:var(--green-text)}
-.panel__flora{position:absolute;pointer-events:none;opacity:.9}
-.panel__flora--br{bottom:-14px;right:-10px;width:clamp(120px,22vw,210px)}
-.panel__flora--bl{bottom:-14px;left:-10px;width:clamp(120px,22vw,210px);transform:scaleX(-1)}
-
 .price-legend{
   display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;
   margin-top:22px;font-size:.72rem;letter-spacing:.08em;color:var(--ink-soft);
@@ -530,17 +525,7 @@ h3{font-size:clamp(1.2rem, 3.4vw, 1.5rem)}
 html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 html.js .reveal.is-in{opacity:1;transform:none}
 
-/* ---------- flora svg tint ---------- */
-.flora-line{color:var(--lime)}
-
 /* ---------- misc ---------- */
-.divider-flora{
-  display:flex;align-items:center;gap:18px;justify-content:center;
-  margin:clamp(40px,7vw,64px) auto;max-width:520px;
-}
-.divider-flora::before,.divider-flora::after{content:"";height:1px;flex:1;background:rgba(51,18,41,.2)}
-.divider-flora svg{width:26px;height:26px;color:var(--green)}
-
 .skip-link{
   position:absolute;left:-9999px;top:0;background:var(--green);color:#fff;
   padding:12px 20px;z-index:999;font-size:.8rem;letter-spacing:.1em;
@@ -730,8 +715,16 @@ html.js .reveal.is-in{opacity:1;transform:none}
 .why-grid{display:grid;gap:14px}
 @media (min-width:640px){.why-grid{grid-template-columns:1fr 1fr;gap:18px}}
 @media (min-width:1000px){.why-grid{grid-template-columns:repeat(4,1fr)}}
-.why{background:var(--bone);padding:28px 24px;box-shadow:var(--shadow-soft)}
-.why > svg{width:22px;height:22px;color:var(--green);margin-bottom:14px}
+.why{background:var(--bone);padding:28px 24px;box-shadow:var(--shadow-soft);border-radius:16px}
+.why__num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:50%;margin-bottom:14px;
+  font-family:var(--font-display);font-size:.95rem;
+  background:var(--green-tint);color:var(--green-text);
+}
+.why:nth-of-type(4n+2) .why__num{background:var(--lime-soft);color:var(--ink)}
+.why:nth-of-type(4n+3) .why__num{background:rgba(124,90,46,.16);color:var(--rose-text)}
+.why:nth-of-type(4n+4) .why__num{background:var(--ink);color:var(--lime)}
 .why h3{font-size:.98rem;letter-spacing:.14em;margin-bottom:8px}
 .why p{font-size:.88rem;color:var(--ink-soft)}
 
@@ -750,26 +743,9 @@ html.js .reveal.is-in{opacity:1;transform:none}
 .note-card p{font-size:.86rem;color:var(--ink-soft);flex:1}
 .note-card .text-link{align-self:flex-start}
 
-/* ---------- v4: botanical flora accents ---------- */
 .page-hero{position:relative;overflow:hidden}
-
-.panel__flora{opacity:.8}
-.panel__flora--br{bottom:-26px;right:6px;width:clamp(90px,15vw,160px)}
-.panel__flora--bl{bottom:-26px;left:6px;width:clamp(90px,15vw,160px);transform:none}
-
 .lash-card--sig{overflow:hidden}
-
 .stat-band{position:relative;overflow:hidden}
-.stat-band__flora{
-  position:absolute;right:-24px;top:50%;transform:translateY(-46%) rotate(8deg);
-  height:150%;width:auto;opacity:.3;pointer-events:none;
-}
-@media (max-width:700px){.stat-band__flora{opacity:.18}}
-
-.cta-band__flora{position:absolute;pointer-events:none}
-.cta-band__flora--r{right:-40px;bottom:-46px;width:clamp(220px,24vw,340px);opacity:.4}
-.cta-band__flora--l{left:-30px;bottom:-40px;width:clamp(130px,14vw,200px);opacity:.28;transform:scaleX(-1) rotate(4deg)}
-@media (max-width:640px){.cta-band__flora--l{display:none}.cta-band__flora--r{width:180px;opacity:.3}}
 
 /* ---------- v5: sharper boxes, classified groups ---------- */
 .eyebrow .idx{
@@ -802,3 +778,145 @@ html.js .reveal.is-in{opacity:1;transform:none}
   .nav a{font-size:.72rem}
 }
 .lash-card--sig{padding-top:50px}
+
+/* ============================================================
+   v6: decluttered + colour-coded, rounded, higher-contrast boxes
+   (golden florals and repeated line-art icons removed sitewide;
+   panels now use real colour and structure to separate one
+   service/section from the next, with less bare white space)
+   ============================================================ */
+
+/* rounder corners across the card language site-wide */
+.panel,.lash-card,.note-card,.step,.flow__step,.build,.contact-list a,.contact-list div,.price-tile,.care-card,.term-card,.tile{
+  border-radius:16px;
+}
+.sig-card{border-radius:14px}
+
+/* ---------- coloured panel variants (services + experience) ---------- */
+.panel--ink{background:var(--ink);color:var(--blush);box-shadow:none}
+.panel--ink .panel__title{color:var(--blush)}
+.panel--ink .panel__note{color:rgba(243,228,205,.8)}
+.panel--ink .eyebrow{color:var(--lime)}
+.panel--ink .price-row .rule{border-bottom-color:rgba(243,228,205,.3)}
+.panel--ink .price-row .amount{color:var(--lime)}
+.panel--ink .price-legend{color:rgba(243,228,205,.72)}
+.panel--ink .price-legend b{color:var(--blush)}
+
+.panel--lime{background:var(--lime-soft);box-shadow:none}
+.panel--lime .amount.acc{color:var(--rose-text)}
+
+.panel--green{background:var(--green-tint);box-shadow:none}
+
+.panel--bordered{box-shadow:none;border:1.5px solid rgba(51,18,41,.7)}
+
+/* small pill tag used to open a coloured panel */
+.panel-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.64rem;font-weight:600;letter-spacing:var(--track-wide);text-transform:uppercase;
+  padding:6px 14px;border-radius:999px;margin-bottom:14px;
+}
+.panel-tag--lime{background:var(--lime);color:var(--ink)}
+.panel-tag--gold{background:rgba(124,90,46,.15);color:var(--rose-text)}
+.panel-tag--outline{border:1px solid rgba(243,228,205,.5);color:var(--blush)}
+
+/* ---------- price tiles: replace bare dotted rows where a list is short,
+   so the panel reads as a set of small filled boxes, not empty space ---------- */
+.price-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+@media (min-width:560px){.price-tiles{grid-template-columns:repeat(3,1fr)}}
+.price-tile{
+  background:rgba(255,255,255,.6);border:1px solid rgba(51,18,41,.14);
+  padding:14px 16px;display:flex;flex-direction:column;gap:6px;
+}
+.panel--ink .price-tile{background:rgba(243,228,205,.07);border-color:rgba(243,228,205,.22)}
+.price-tile .name{font-size:.8rem;line-height:1.35}
+.price-tile .amount{font-family:var(--font-display);font-size:1.3rem;color:var(--green-text)}
+.panel--ink .price-tile .amount{color:var(--lime)}
+.price-tile .amount.acc{color:var(--rose-text)}
+.price-group__label{
+  font-size:.68rem;font-weight:600;letter-spacing:var(--track-mid);text-transform:uppercase;
+  color:var(--rose-text);margin:22px 0 4px;
+}
+.panel--ink .price-group__label{color:var(--lime)}
+.price-group__label:first-of-type{margin-top:26px}
+
+/* ---------- short bullet lists inside panels, used instead of long paragraphs ---------- */
+.panel .ticks{margin-top:16px}
+.panel--ink .ticks li::before{background:var(--lime);color:var(--ink)}
+.panel--ink .ticks li{color:rgba(243,228,205,.9)}
+
+/* ---------- experience: aftercare cards get colour, a border and a hard offset
+   "sticker" shadow instead of sitting flat on cream ---------- */
+.care-card{
+  background:var(--bone);padding:clamp(26px,5vw,34px) clamp(22px,4.5vw,30px);
+  border:2px solid var(--green);
+  box-shadow:7px 7px 0 var(--lime-soft);
+}
+.care-card--gold{border-color:var(--rose-text);box-shadow:7px 7px 0 rgba(124,90,46,.18)}
+@media (max-width:520px){.care-card{box-shadow:5px 5px 0 var(--lime-soft)}.care-card--gold{box-shadow:5px 5px 0 rgba(124,90,46,.18)}}
+.tag-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.62rem;font-weight:600;letter-spacing:var(--track-wide);text-transform:uppercase;
+  background:var(--green-tint);color:var(--green-text);
+  padding:6px 14px;border-radius:999px;margin-bottom:14px;
+}
+.tag-badge--gold{background:rgba(124,90,46,.14);color:var(--rose-text)}
+.care-card .save-tip{
+  margin-top:16px;padding-top:14px;border-top:1px dashed rgba(51,18,41,.18);
+  font-size:.82rem;color:var(--ink-soft);
+}
+.care-card .save-tip b{color:var(--ink);font-weight:500}
+
+/* prep steps: colour-coded top accent per service, so the three
+   don't read as identical grey boxes */
+.step{border-top:3px solid var(--green)}
+.step--gold{border-top-color:var(--rose-text)}
+.step--ink{border-top-color:var(--ink)}
+
+/* ---------- contact: real per-channel icons + colour, rounded, boxed ---------- */
+.contact-list a,.contact-list div{border-left:4px solid var(--green)}
+.contact-list a.c-tiktok{border-left-color:var(--ink)}
+.contact-list a.c-email{border-left-color:var(--rose-text)}
+.contact-list div.c-studio{border-left-color:var(--lime)}
+.contact-list .ic.ic--tiktok{background:rgba(51,18,41,.08);color:var(--ink)}
+.contact-list .ic.ic--email{background:rgba(124,90,46,.14);color:var(--rose-text)}
+.contact-list .ic.ic--studio{background:var(--lime-soft);color:var(--green-deep)}
+.contact-note{
+  margin-top:26px;background:var(--green-tint);border-radius:16px;
+  padding:20px 22px;font-size:.88rem;color:var(--ink-soft);
+}
+.contact-note b{color:var(--ink);font-weight:500}
+
+/* ---------- FAQ group filters (reuses .filter-btn / .filters look) ---------- */
+.faq-panel{display:block}
+.faq-panel.is-hidden{display:none}
+.faq-panel + .faq-panel{margin-top:8px}
+.faq-group{
+  display:flex;align-items:center;gap:14px;
+  margin:clamp(30px,5vw,44px) 0 6px;
+}
+.faq-panel:first-child .faq-group{margin-top:6px}
+
+/* ---------- Nova Notes (education hub) page ---------- */
+.term-card{
+  background:var(--blush);padding:22px 22px 20px;box-shadow:var(--shadow-soft);
+  display:flex;flex-direction:column;gap:6px;
+}
+.term-card b{font-family:var(--font-display);font-size:1.02rem;letter-spacing:.06em;color:var(--ink)}
+.term-card span{font-size:.84rem;color:var(--ink-soft)}
+.term-grid{display:grid;gap:12px}
+@media (min-width:640px){.term-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.term-grid{grid-template-columns:repeat(3,1fr)}}
+
+.trend-row{
+  display:flex;align-items:baseline;gap:14px;padding:14px 0;
+  border-bottom:1px solid rgba(51,18,41,.12);
+}
+.trend-row b{font-family:var(--font-display);min-width:120px;flex:none;color:var(--green-text)}
+.trend-row p{font-size:.88rem;color:var(--ink-soft);margin:0}
+
+.notes-cta{
+  background:var(--ink);color:var(--blush);border-radius:18px;
+  padding:clamp(30px,5vw,46px) clamp(24px,5vw,38px);text-align:center;
+}
+.notes-cta h2{color:var(--blush)}
+.notes-cta .lede{color:rgba(243,228,205,.8);margin:14px auto 26px}
