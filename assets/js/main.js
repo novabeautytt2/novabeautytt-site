@@ -178,4 +178,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { rootMargin: "-25% 0px -65% 0px" });
     map.forEach((_, s) => io.observe(s));
   }
+
+  /* FAQ topic filters (All / General / Lashes / Nails) */
+  const faqFilterBtns = document.querySelectorAll("[data-faq-filter]");
+  const faqPanels = document.querySelectorAll(".faq-panel");
+  if (faqFilterBtns.length && faqPanels.length) {
+    faqFilterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        faqFilterBtns.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        const group = btn.dataset.faqFilter;
+        faqPanels.forEach(panel => {
+          panel.classList.toggle("is-hidden", group !== "all" && panel.dataset.group !== group);
+        });
+      });
+    });
+  }
 });
