@@ -89,7 +89,7 @@ h3{font-size:clamp(1.2rem, 3.4vw, 1.5rem)}
 
 /* ---------- layout primitives ---------- */
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.section{padding:clamp(64px,10vw,120px) 0;position:relative}
+.section{padding:clamp(44px,8vw,110px) 0;position:relative}
 .section--blush{background:var(--blush)}
 .section--ink{background:var(--ink);color:var(--blush)}
 .section--ink h2,.section--ink h3{color:var(--blush)}
@@ -138,21 +138,21 @@ h3{font-size:clamp(1.2rem, 3.4vw, 1.5rem)}
 }
 .header__inner{
   display:flex;align-items:center;justify-content:space-between;
-  gap:16px;height:68px;
+  gap:16px;height:76px;
 }
 .wordmark{display:flex;align-items:center}
-.wordmark img{height:34px;width:auto;display:block}
-@media (min-width:900px){.wordmark img{height:40px}}
+.wordmark img{height:44px;width:auto;display:block}
+@media (min-width:900px){.wordmark img{height:52px}}
 .nav{display:none}
 .nav a{
-  font-size:.72rem;font-weight:400;letter-spacing:var(--track-mid);text-transform:uppercase;
-  padding:8px 2px;position:relative;color:var(--ink-soft);transition:color .2s;
+  font-size:.78rem;font-weight:600;letter-spacing:var(--track-mid);text-transform:uppercase;
+  padding:8px 2px;position:relative;color:var(--ink);transition:color .2s;
 }
 .nav a::after{
   content:"";position:absolute;left:0;bottom:2px;width:0;height:2px;
   background:var(--lime);transition:width .25s ease;
 }
-.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--green-deep)}
 .nav a:hover::after,.nav a[aria-current="page"]::after{width:100%}
 .header .btn{padding:11px 22px;min-height:42px}
 .header__book{display:none}
@@ -563,13 +563,13 @@ html.js .reveal.is-in{opacity:1;transform:none}
 [id]{scroll-margin-top:124px}
 
 /* ---------- shared page hero ---------- */
-.page-hero{padding-bottom:clamp(40px,6vw,64px)}
+.page-hero{padding:clamp(30px,5vw,56px) 0 clamp(28px,5vw,52px)}
 .page-hero h1{font-size:clamp(1.9rem,7vw,3.6rem)}
 .page-hero .lede{margin:16px auto 0}
 
 /* ---------- services subnav ---------- */
 .subnav{
-  position:sticky;top:68px;z-index:80;
+  position:sticky;top:76px;z-index:80;
   background:rgba(250,243,231,.94);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(51,18,41,.08);
@@ -589,7 +589,7 @@ html.js .reveal.is-in{opacity:1;transform:none}
 .subnav a.is-here{background:var(--ink);border-color:var(--ink);color:var(--bone)}
 
 /* ---------- menu section heads ---------- */
-.menu-head{text-align:center;margin-bottom:clamp(28px,5vw,44px)}
+.menu-head{text-align:center;margin-bottom:clamp(22px,4vw,40px)}
 .menu-head .lede{margin:14px auto 0}
 .menu-meta{
   margin-top:14px;font-size:.68rem;font-weight:500;
@@ -752,23 +752,12 @@ html.js .reveal.is-in{opacity:1;transform:none}
 
 /* ---------- v4: botanical flora accents ---------- */
 .page-hero{position:relative;overflow:hidden}
-.page-hero__flora{
-  position:absolute;right:-46px;bottom:-64px;
-  width:clamp(200px,26vw,340px);opacity:.5;
-  pointer-events:none;transform:rotate(-4deg);
-}
-@media (max-width:640px){.page-hero__flora{width:150px;right:-58px;bottom:-58px;opacity:.32}}
 
 .panel__flora{opacity:.8}
 .panel__flora--br{bottom:-26px;right:6px;width:clamp(90px,15vw,160px)}
 .panel__flora--bl{bottom:-26px;left:6px;width:clamp(90px,15vw,160px);transform:none}
 
 .lash-card--sig{overflow:hidden}
-.lash-card__flora{
-  position:absolute;right:-42px;bottom:-46px;width:130px;
-  opacity:.26;pointer-events:none;transform:rotate(6deg);
-}
-.lash-card--sig > *:not(.lash-card__flora){position:relative;z-index:1}
 
 .stat-band{position:relative;overflow:hidden}
 .stat-band__flora{
@@ -781,3 +770,35 @@ html.js .reveal.is-in{opacity:1;transform:none}
 .cta-band__flora--r{right:-40px;bottom:-46px;width:clamp(220px,24vw,340px);opacity:.4}
 .cta-band__flora--l{left:-30px;bottom:-40px;width:clamp(130px,14vw,200px);opacity:.28;transform:scaleX(-1) rotate(4deg)}
 @media (max-width:640px){.cta-band__flora--l{display:none}.cta-band__flora--r{width:180px;opacity:.3}}
+
+/* ---------- v5: sharper boxes, classified groups ---------- */
+.eyebrow .idx{
+  font-style:normal;display:inline-block;margin-right:10px;padding:2px 7px;
+  border:1px solid currentColor;border-radius:2px;font-size:.62rem;letter-spacing:.1em;
+}
+.lash-card{
+  border:1px solid rgba(51,18,41,.14);box-shadow:none;
+  padding:22px 20px 18px;gap:10px;
+}
+.lash-card--sig{border-color:var(--ink)}
+.lash-card__prices{
+  background:rgba(51,18,41,.05);border:1px solid rgba(51,18,41,.1);
+  border-top:1px solid rgba(51,18,41,.1);
+  margin:2px -8px -6px;padding:12px 12px 10px;
+}
+.lash-card--sig .lash-card__prices{
+  background:rgba(243,228,205,.08);border-color:rgba(243,228,205,.24);
+}
+.panel{border:1px solid rgba(51,18,41,.1)}
+.panel .eyebrow{display:block;margin-bottom:10px}
+@media (max-width:640px){
+  .lash-deck{gap:12px}
+  .panel{padding:26px 18px}
+  .section-head .lede,.menu-head .lede{font-size:.95rem}
+}
+.header .btn{white-space:nowrap}
+@media (min-width:900px) and (max-width:1220px){
+  .nav{gap:18px}
+  .nav a{font-size:.72rem}
+}
+.lash-card--sig{padding-top:50px}
