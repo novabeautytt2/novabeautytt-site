@@ -54,10 +54,15 @@ the `masonry__item` blocks in `gallery.html` and update the filename,
 
 ## Regenerating pages (optional)
 
-`generate.py` produced the HTML and keeps header/footer consistent across
-pages. Editing the HTML files directly is completely fine; only re-run
-`python3 generate.py` if making structural changes across every page, and
-note it will overwrite direct HTML edits.
+`generate.py` produced earlier versions of the HTML. This site has since had a
+round of direct edits (declutter pass: flowers and repeated icons removed,
+services/experience pages redesigned with colour, FAQ reorganised into
+filterable topics, a new `/notes` page added, and policies softened). Those
+edits were made straight to the HTML files and are **not** reflected in
+`generate.py`. Do not run `python3 generate.py` — it would overwrite this
+work with the older template content. If you want a script-driven build
+again in future, treat the current HTML files as the new source of truth and
+update `generate.py` to match them first.
 
 ## Also included
 
